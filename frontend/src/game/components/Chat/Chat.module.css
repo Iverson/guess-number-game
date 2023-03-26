@@ -1,0 +1,5 @@
+.messages {
+  height: 134px;
+  position: relative;
+  overflow-y: auto;
+}

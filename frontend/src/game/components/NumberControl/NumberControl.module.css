@@ -1,0 +1,15 @@
+.inputGroup {
+  margin: 2px 0 1px 0;
+}
+
+.input :global(.rs-input-number-btn-group-vertical) {
+  display: none;
+}
+
+.input input {
+  text-align: center;
+  background-color: rgb(24 24 27);
+  color: #fff;
+  font-size: 16px !important;
+  font-weight: 600;
+}

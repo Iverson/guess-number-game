@@ -1,0 +1,71 @@
+.root {
+  height: 550px;
+  position: relative;
+}
+
+.canvas {
+  transform: scale(4.7);
+  width: 125px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -52px 0 0 -111px;
+  z-index: 1;
+}
+
+.svg {
+  width: 100%;
+  fill: none;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke: #ec4899;
+}
+
+.svg path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate .svg path {
+  animation: dash calc(5s / var(--speed)) linear forwards;
+}
+
+.animate .ball {
+  animation: ball calc(2.5s / var(--speed)) linear forwards;
+}
+
+.ball {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #f97316;
+  border-radius: 50%;
+
+  offset-path: path('M1 84c39 1 82.75 1 123-83');
+  offset-distance: 0%;
+}
+
+@keyframes ball {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+.x {
+  position: absolute;
+  left: 2.5rem;
+  right: 2.5rem;
+  bottom: 50px;
+}
