@@ -51,6 +51,7 @@ export const GamePage = observer(function GamePage() {
                 <NumberControl
                   label="Multiplier"
                   step={0.25}
+                  fractionDigits={2}
                   min={MULTIPLIER_MIN}
                   max={MULTIPLIER_MAX}
                   value={currentRound.getPlayerMultiplier(userId)}
@@ -162,7 +163,7 @@ export const GamePage = observer(function GamePage() {
             />
             Ranking
           </h2>
-          <Ranking userId={userId} players={allPlayers} />
+          <Ranking userId={userId} players={prevRound ? allPlayers : []} />
         </div>
         <div className="min-h-full w-full">
           <h2 className="mb-2 text-white font-semibold text-lg flex">

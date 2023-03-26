@@ -29,6 +29,7 @@ export class AppGateway
     client: Socket,
     payload: ChatMessageDTO,
   ): Promise<void> {
+    // TODO: save messages to DB in real multi-player game
     this.server.emit('chat:receiveMessage', payload);
   }
 
@@ -37,6 +38,7 @@ export class AppGateway
     client: Socket,
     payload: Pick<GameRoundDTO, 'id'>,
   ): Promise<void> {
+    // TODO: move all scoring logic to backend in real multi-player game
     this.server.emit('game:roundFinished', {
       ...payload,
       resultNumber: randomInt(1, 10),

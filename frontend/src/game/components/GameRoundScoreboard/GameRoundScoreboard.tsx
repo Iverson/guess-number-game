@@ -65,7 +65,7 @@ export const GameRoundScoreboard = observer(function GameRoundScoreboard({
                   {Math.floor(score)}
                 </td>
                 <td className={cx(tdClassNameFull, 'text-center')}>
-                  {round.getPlayerMultiplier(player.id)}
+                  {round.getPlayerMultiplier(player.id).toFixed(2)}
                 </td>
               </tr>
             );

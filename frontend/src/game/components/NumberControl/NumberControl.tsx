@@ -7,6 +7,7 @@ import { isDefinedValue } from '../../utils';
 type NumberControlProps = {
   label: ReactNode;
   value: number;
+  fractionDigits?: number;
   step?: number;
   max?: number;
   min?: number;
@@ -19,6 +20,7 @@ export const NumberControl = memo(function NumberControl({
   value,
   max,
   min,
+  fractionDigits = 0,
   step = 1,
   onChange,
   ...attrs
@@ -55,7 +57,7 @@ export const NumberControl = memo(function NumberControl({
         <InputNumber
           size="xs"
           className={cx('bg-zinc-900 ', styles.input)}
-          value={value}
+          value={value.toFixed(fractionDigits)}
           min={min}
           max={max}
           onChange={(v) => onChange(Number(v))}

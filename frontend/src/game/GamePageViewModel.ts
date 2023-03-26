@@ -48,7 +48,6 @@ export class GamePageViewModel extends ViewModel {
         () => this.currentRound?.isFinished,
         (isFinished) => isFinished && this.onCurrentRoundFinished(),
       ),
-      // this.onWelcomeFormSubmit('Alex'),
       () => socket.off('chat:receiveMessage', this.recieveNewChatMessage),
       () => window.clearInterval(timer),
     );
@@ -69,7 +68,6 @@ export class GamePageViewModel extends ViewModel {
 
     const round = new GameRound(this.userId, [...this.allPlayers]);
 
-    // Set fake points/multipliers for auto-players
     this.allPlayers.forEach((player) => {
       if (player.id === this.userId) {
         round.setPlayerPoints(
@@ -78,6 +76,7 @@ export class GamePageViewModel extends ViewModel {
         );
         round.setPlayerMultiplier(player.id, MULTIPLIER_MIN);
       } else {
+        // Set fake points/multipliers for auto-players
         round.setPlayerPoints(
           player.id,
           Math.min(player.score, ROUND_POINTS_DEFAULT),
@@ -148,6 +147,7 @@ export class GamePageViewModel extends ViewModel {
 
   @action
   saveRoundScores = (round: GameRound) => {
+    // TODO: move all scoring logic to backend in real multi-player game
     round.players.forEach(({ id }) => {
       const player = this.players[id];
       this.players[id] = {
@@ -170,6 +170,7 @@ export class GamePageViewModel extends ViewModel {
     if (!round) return;
 
     round.start();
+    // TODO: move all scoring logic to backend in real multi-player game
     round.players.forEach(({ id }) => {
       const player = this.players[id];
       this.players[id] = {
